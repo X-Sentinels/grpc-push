@@ -1,0 +1,18 @@
+//
+// pushnotif.proto
+// 
+// Example that implements push notification from grpc server to client
+//
+syntax = "proto3";
+
+service pushNotif {
+	rpc Register (RegistrationRequest) returns (stream RegistrationResponse);
+}
+
+message RegistrationRequest {
+	string clientName = 1;
+}
+
+message RegistrationResponse {
+	string notice = 3;
+}
