@@ -39,6 +39,15 @@ var (
 	lock       = new(sync.RWMutex)
 )
 
+func InArray(str string, array []string) bool {
+	for _, s := range array {
+		if s == str {
+			return true
+		}
+	}
+	return false
+}
+
 func Config() *GlobalConfig {
 	lock.RLock()
 	defer lock.RUnlock()

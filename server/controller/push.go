@@ -21,10 +21,10 @@ func Validate(c *gin.Context) {
 
 func PushNotification(c *gin.Context) {
 	clientName := c.Request.Header.Get("clientName")
-	if clientName == "" {
+	if !g.InArray(clientName, g.Config().AliveClients) {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"success": false,
-			"msg":     "Missing ClientName",
+			"msg":     "ClientName is not in the alive list",
 		})
 		return
 	}

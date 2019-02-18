@@ -20,21 +20,12 @@ func newServer() *Server {
 	return &Server{name: "pushnotifServer", Strm: make(map[string]pb.PushNotif_RegisterServer)}
 }
 
-func inArray(str string, array []string) bool {
-	for _, s := range array {
-		if s == str {
-			return true
-		}
-	}
-	return false
-}
-
 func (s *Server) Register(m *pb.RegistrationRequest, stream pb.PushNotif_RegisterServer) error {
 	clientName := m.GetClientName()
 	log.Printf("Received a Client Regist %s", clientName)
 	s.Strm[clientName] = stream
 	clients := g.Config().AliveClients
-	if !inArray(clientName, clients) {
+	if !g.InArray(clientName, clients) {
 		g.Config().AliveClients = append(clients, clientName)
 	}
 	log.Printf("Client %s will now recieve streams", m.GetClientName())
