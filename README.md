@@ -46,7 +46,7 @@ server stoped...
 ```
 
 #### 接口
-grpc 注册过的 client 列表
+grpc 注册上来的 client 列表
 ```
 # curl -v -H "X-API-KEY: 26d66c3822bff031b2aacbcbfe3d9d14" http://127.0.0.1:18080/api/v1/clients
 *   Trying 127.0.0.1...
@@ -90,7 +90,7 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 {"msg":"ok","success":true}
 
 ```
-client 侧响应 
+client 侧获得数据
 ```
 #./client.exe -a 202.120.83.82:50051
 2019/02/18 23:47:19 Calling Register RPC

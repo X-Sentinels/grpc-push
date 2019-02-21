@@ -15,6 +15,7 @@ func Validate(c *gin.Context) {
 			"success": false,
 			"msg":     "X-API-KEY IS Wrong",
 		})
+		c.Abort()
 		return
 	}
 }
